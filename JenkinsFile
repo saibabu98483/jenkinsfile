@@ -1,0 +1,18 @@
+pipeline {
+   agent any
+
+   stages {
+     stage ('Deploy') {
+    steps{
+        sshagent(credentials : ['1be0a78e-cd81-4f51-a119-78d273ea6e26']) {
+            sh '''
+            ssh -o StrictHostKeyChecking=no djo@45.76.127.184<<EOF
+            cd ~/bin/djo
+            ls            
+            '''
+        
+        }
+    }
+}
+      }
+   }
